@@ -12,6 +12,7 @@ public class RSVPController {
     private RSVPRepo repository;
 
     @CrossOrigin(origins = "http://rosolynwedding.com:3000")
+
     @PostMapping(path= "/",  headers = {
             "content-type=application/json" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String index(@RequestBody RSVP rsvp) {
