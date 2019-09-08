@@ -22,7 +22,7 @@ public class RSVPController {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @CrossOrigin(origins = "http://rosolynwedding.com:3000")
+    @CrossOrigin(origins = {"http://rosolynwedding.com:3000","http://www.rosolynwedding.com:3000"})
 
     @PostMapping(path= "/",  headers = {
             "content-type=application/json" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,7 +40,7 @@ public class RSVPController {
 
         System.out.println(springMailUsername);
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("rbrsmith@gmail.com");
+        msg.setTo("rbrsmith@gmail.com", "ctspeight@hotmail.com");
 
         msg.setSubject("New RSVP from " + rsvp.getRsvpname());
         msg.setText(rsvp.toString());
