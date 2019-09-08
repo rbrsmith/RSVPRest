@@ -71,6 +71,6 @@ public class RSVP {
 
     @Override
     public String toString() {
-        return getRsvpname() + " " + getJoiningfor() + " " + getAccomadation() + " " + getRsvpconstraint() + " " + getRsvpemail();
+        return "Name: " + getRsvpname() + "\nJoining us for: " + getJoiningfor() + "\nStaying at chateau: " + getAccomadation() + "\nDietary Info:" + getRsvpconstraint() + "\nEmail:" + getRsvpemail();
     }
 }

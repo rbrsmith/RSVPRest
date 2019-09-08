@@ -1,15 +1,26 @@
 package RSVPAPI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 
 @RestController
+
 public class RSVPController {
+    @Value("${spring.mail.username}")
+    String springMailUsername;
+
 
     @Autowired
     private RSVPRepo repository;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @CrossOrigin(origins = "http://rosolynwedding.com:3000")
 
@@ -19,7 +30,25 @@ public class RSVPController {
 
         System.out.println("Received RSVP details: " + rsvp);
         repository.save(rsvp);
+        sendEmail(rsvp);
         return rsvp.getRsvpname();
     }
+
+
+
+    void sendEmail(RSVP rsvp) {
+
+        System.out.println(springMailUsername);
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("rbrsmith@gmail.com");
+
+        msg.setSubject("New RSVP from " + rsvp.getRsvpname());
+        msg.setText(rsvp.toString());
+
+        javaMailSender.send(msg);
+
+    }
+
+
 
 }
