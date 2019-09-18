@@ -22,7 +22,7 @@ public class RSVPController {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @CrossOrigin(origins = {"http://rosolynwedding.com:3000","http://www.rosolynwedding.com:3000"})
+    @CrossOrigin(origins = {"http://rosolynwedding.com:3000","http://www.rosolynwedding.com:3000","http://www.rosolynwedding.com","http://rosolynwedding.com"})
 
     @PostMapping(path= "/",  headers = {
             "content-type=application/json" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
